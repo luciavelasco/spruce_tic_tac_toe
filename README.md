@@ -1,5 +1,33 @@
 
 # Tic-Tac-Toe
+
+## Quickstart
+Make sure you have **node** installed.
+
+To run the UI:
+- `cd client`
+- `npm i`
+- `npm start`
+
+To run the API:
+- `docker-compose up --detach`
+- `cd api`
+- `npm i`
+- `npm start`
+
+## About the Solutions
+
+I tend to favour a loosely functional, JS-to-the-max approach. While this style 
+has been the norm in some of my previous roles, it wouldn't be the right approach 
+for every codebase, particularly on fullstack teams where the backend code is a 
+notably different style. I'd be keen to find out which areas of the code did or did not vibe with your own approach!
+
+I did problems 1 and 3, but I coded with problem 2 (variable grid size) in mind.
+
+If I had done problem 2, I would have wanted to check whether the win condition is 3-in-a-row or $numberOfSides-in-a-row. I may have reevaluated my approach for `checkWinner`, particularly because of the number of loops used to turn diagonals into arrays. I would also have added responsive or adaptive sizing to the board using Tailwind's preset screen sizes.
+
+## Instructions
+
 The below problems are to allow us a glimpse into your problem solving ability, style and current skill set. Please do problem 1, and optionally problem 2 or 3 depending on where you are most comfortable. We expect this test to take 2-3 hours, if you find yourself spending more than this do not aim to solve all 3 problems! We will not be judging based on number of problems completed only the style and thought process.
 
 ## Problems
@@ -29,9 +57,3 @@ Simplification for the task:
 - optionally create a Dockerfile to build both back-end and front-end. Do not create any deployment scripts, if it's not necessary.
 - optional tests are welcome
 
-
-## Quickstart
-- Make sure you have **node** installed
-- `cd client`
-- `npm i`
-- `npm start`
