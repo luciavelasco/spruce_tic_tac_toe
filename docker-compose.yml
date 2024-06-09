@@ -1,0 +1,14 @@
+
+services:
+
+  db:
+    image: mariadb
+    restart: unless-stopped
+    container_name: tictactoe-spruce-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - ./db:/var/lib/mysql
+    ports:
+      - 3306:3306
+
