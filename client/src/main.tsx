@@ -32,7 +32,11 @@ export const Main = () => {
           {row.map((cell, columnIndex) =>
             <div
               key={`tictactoe-${rowIndex}${columnIndex}`}
-              className="border-2 border-gray-900 w-20 h-20 cursor-pointer items-center justify-center text-7xl font-bold flex"
+              className={`
+               border-2 border-gray-900 w-20 h-20 cursor-pointer
+               items-center justify-center text-7xl font-bold flex
+               ${cell ? 'bg-green-300' // it needed some pizzazz
+                : !winner ? 'transition duration-1000 bg-transparent hover:bg-green-300' : ''}`}
               onClick={() => {
                 if (!winner && cell === undefined) {
                   const newBoard: Board = [...board]
