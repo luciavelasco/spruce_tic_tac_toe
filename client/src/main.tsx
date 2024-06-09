@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react'
-import { Board, XorO } from './types'
+import React, { useState } from 'react'
+import { Board, XorO } from '../../types'
 import { newBoard } from './utils'
+import { Button } from './components'
 
 export const Main = () => {
   const [board, setBoard] = useState<Board>(newBoard())
@@ -50,8 +51,7 @@ export const Main = () => {
       )}
     </div>
 
-    <button
-      className="rounded-full bg-green-300 px-8 py-4 text-lg font-medium"
+    <Button
       onClick={() => {
         setBoard(newBoard())
         setWinner(undefined)
@@ -60,12 +60,14 @@ export const Main = () => {
       }}
     >
       reset game
-    </button>
+    </Button>
+
 
     {winner
       ? <p className="font-bold text-3xl">Game over, {winner} won!</p>
       : turnsPlayed === (board.length ** 2)
         ? <p className="font-bold text-3xl">Game over: no winner.</p>
         : null}
+
   </div>
 }
