@@ -1,6 +1,6 @@
-import { Board, XorO } from './types'
+import { Board } from '../../types'
 
-// This is what I'd do for task 2, but I'd want to run it through code review to check
+// This is what I'd do to support task 2, but I'd want to run it through code review to check
 //   it wasn't too obtuse depending on the codebase style.
 //   Ask me why I'm spreading instead of filling (hint: arrays are objects)
 export const newBoard = (gridSize = 3): Board =>

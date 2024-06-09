@@ -8,22 +8,22 @@ export const Main = () => {
   const [winner, setWinner] = useState<XorO | undefined>(undefined)
   const [turnsPlayed, setTurnsPlayed] = useState<number>(0)
 
-  useEffect(() => {
-    const checkWinnerInRows = (board: Board): void => board.forEach(row =>
+  const checkWinner = (rows: Board): void => {
+    const checkWinnerInGroup = (group: Board): void => group.forEach(row =>
       (row[ 0 ] === 'X' || row[ 0 ] === 'O') && row.every(value => value === row[ 0 ]) && setWinner(row[ 0 ]))
 
-    checkWinnerInRows(board)
-    const columnsToRows = [...new Array(board.length)].map((v, column) => board.map(row => row[ column ]))
-    checkWinnerInRows(columnsToRows)
+    checkWinnerInGroup(rows)
+    const columnsToRows = [...new Array(rows.length)].map((v, column) => rows.map(row => row[ column ]))
+    checkWinnerInGroup(columnsToRows)
     const diagonalToRows = [
-      board.map((row, i) => board[ i ][ i ]),
-      [...board].reverse().map((row, i, reversedBoard) => reversedBoard[ i ][ i ])
+      rows.map((row, i) => rows[ i ][ i ]),
+      [...rows].reverse().map((row, i, reversedBoard) => reversedBoard[ i ][ i ])
     ]
-    checkWinnerInRows(diagonalToRows)
-
-  }, [board])
+    checkWinnerInGroup(diagonalToRows)
+  }
 
   return <div className="flex flex-col mt-10 items-center gap-10">
+
     <h1 className="font-bold text-5xl">Tic Tac Toe</h1>
     <div className="flex flex-col gap-1">
       {board.map((row, rowIndex) =>
@@ -37,6 +37,7 @@ export const Main = () => {
                   const newBoard: Board = [...board]
                   newBoard[ rowIndex ][ columnIndex ] = currentPlayer
                   setBoard(newBoard)
+                  checkWinner(newBoard)
                   setCurrentPlayer(currentPlayer === 'X' ? 'O' : 'X')
                   setTurnsPlayed(turnsPlayed + 1)
                 }
