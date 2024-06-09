@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Board, XorO } from '../../types'
 import { newBoard } from './utils'
-import { Button } from './components'
+import { Button, Scoreboard } from './components'
 
 export const Main = () => {
   const [board, setBoard] = useState<Board>(newBoard())
@@ -62,6 +62,7 @@ export const Main = () => {
       reset game
     </Button>
 
+    <Scoreboard winner={winner}/>
 
     {winner
       ? <p className="font-bold text-3xl">Game over, {winner} won!</p>
