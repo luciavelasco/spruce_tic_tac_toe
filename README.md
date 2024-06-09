@@ -24,7 +24,7 @@ notably different style. I'd be keen to find out which areas of the code did or 
 
 I did problems 1 and 3, but I coded with problem 2 (variable grid size) in mind.
 
-If I had done problem 2, I would have wanted to check whether the win condition is 3-in-a-row or $numberOfSides-in-a-row. I may have reevaluated my approach for `checkWinner`, particularly because of the number of loops used to turn diagonals into arrays. I would also have added responsive or adaptive sizing to the board using Tailwind's preset screen sizes.
+If I had done problem 2, I would have wanted to check whether the win condition is 3-in-a-row or $numberOfSides-in-a-row. I may have reevaluated my approach for `checkWinner`, particularly because of the number of loops used to construct all the possible diagonal groups if the streak-to-win === 3. I would also have added responsive or adaptive sizing to the board using Tailwind's preset screen sizes.
 
 ## Instructions
 
