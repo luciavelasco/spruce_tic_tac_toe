@@ -1,27 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import { Board, XorO } from './types'
 import { newBoard } from './utils'
+import { useWinner } from './hooks'
 
 export const Main = () => {
   const [board, setBoard] = useState<Board>(newBoard())
   const [currentPlayer, setCurrentPlayer] = useState<XorO>('X')
-  const [winner, setWinner] = useState<XorO | undefined>(undefined)
   const [turnsPlayed, setTurnsPlayed] = useState<number>(0)
+  const { winner, resetWinner } = useWinner(board)
 
-  useEffect(() => {
-    const checkWinnerInRows = (board: Board): void => board.forEach(row =>
-      (row[ 0 ] === 'X' || row[ 0 ] === 'O') && row.every(value => value === row[ 0 ]) && setWinner(row[ 0 ]))
-
-    checkWinnerInRows(board)
-    const columnsToRows = [...new Array(board.length)].map((v, column) => board.map(row => row[ column ]))
-    checkWinnerInRows(columnsToRows)
-    const diagonalToRows = [
-      board.map((row, i) => board[ i ][ i ]),
-      [...board].reverse().map((row, i, reversedBoard) => reversedBoard[ i ][ i ])
-    ]
-    checkWinnerInRows(diagonalToRows)
-
-  }, [board])
+  const resetState = () => {
+    setBoard(newBoard())
+    resetWinner()
+    setCurrentPlayer('X')
+    setTurnsPlayed(0)
+  }
 
   return <div className="flex flex-col mt-10 items-center gap-10">
     <h1 className="font-bold text-5xl">Tic Tac Toe</h1>
@@ -51,12 +44,7 @@ export const Main = () => {
 
     <button
       className="rounded-full bg-green-300 px-8 py-4 text-lg font-medium"
-      onClick={() => {
-        setBoard(newBoard())
-        setWinner(undefined)
-        setCurrentPlayer('X')
-        setTurnsPlayed(0)
-      }}
+      onClick={resetState}
     >
       reset game
     </button>
